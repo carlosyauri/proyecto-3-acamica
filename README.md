@@ -17,7 +17,7 @@ El objetivo del trabajo es generar el backend de una app de pedidos de comida ll
 
 ## Documentación de la API
 
-Abrir el archivo `swagger.yaml` y copiar su contenido en [Swagger](https://editor.swagger.io/) o importar el mismo desde las opciones
+Abrir el archivo `swagger.yml` y copiar su contenido en [Swagger](https://editor.swagger.io/) o importar el mismo desde las opciones
 
 Se listarán los endpoints y métodos disponibles y la información necesaria para hacer uso de los mismos
 
