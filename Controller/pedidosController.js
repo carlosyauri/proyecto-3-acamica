@@ -155,7 +155,7 @@ router.get("/", validacionJwt, async(req, res) => {
         ]
         });
 
-    if (allPedidos) return res.status(200).json({message: "Operacion exitosa", allPedidos});
+    if (allPedidos.length > 0) return res.status(200).json({message: "Operacion exitosa", allPedidos});
     return res.status(400).json({ 
 
         message: "No se encontraron pedidos"
@@ -167,8 +167,7 @@ router.get("/", validacionJwt, async(req, res) => {
 router.put('/:id', validacionJwt, async(req,res) => {
 
     if(req.user.admin == false){
-        res.send("No estas autorizado")
-        return
+        return res.status(401).json({message: "No estas autorizado"})
     }
 
     //////// CAMBIAR SI EXISTE BODY
@@ -237,7 +236,6 @@ router.put('/:id', validacionJwt, async(req,res) => {
                 where : {id_pedidos : req.params.id}
             })
 
-            console.log(pedidoActualizado)
 
             const estadoNuevo = await models.estados.findOne({
                 where : {id: pedidoActualizado.EstadoId}
@@ -255,6 +253,25 @@ router.put('/:id', validacionJwt, async(req,res) => {
             })
         }
         
+
+})
+
+router.delete("/:id", validacionJwt, async(req, res) => {
+
+    if(req.user.admin == false){
+        return res.status(401).json({message: "No estas autorizado"})
+    }
+
+    const eliminarPedido = await models.pedidos.destroy({
+        where: {id_pedidos: req.params.id}
+    })
+
+
+    if(eliminarPedido) return res.status(200).json({ message: `Pedido con ID ${req.params.id}, eliminado con exito`});
+    res.status(400).json({
+        message: `No se encontro pedido con el ID: ${req.params.id}`
+    })
+
 
 })
         
