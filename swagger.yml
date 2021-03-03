@@ -289,6 +289,28 @@ paths:
           description: El estado de su pedido ya esta finalizado
         '400':
           description: Error al actualizar estado. El pedido con ese id no existe
+        '401':
+          description: No estas autorizado
+    delete:
+      tags:
+        - Pedidos
+      summary: Eliminar pedidos (solo Admin)
+      description: Elimina un pedido por ID
+      parameters:
+        - name: id
+          in: path
+          description: ID del pedido a eliminar.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Pedido eliminado con exito
+        '400':
+          description: No se encontro pedido con ese id
+        '401':
+          description: No estas autorizado
+
 components:
   schemas:
     Usuario:
