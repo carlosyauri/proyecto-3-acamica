@@ -26,7 +26,7 @@ Se listarán los endpoints y métodos disponibles y la información necesaria pa
 ### 1 - Clonar proyecto
 Desde la consola con el siguiente link:
 
-`git clone https://github.com/patofara/delilah_resto.git .`
+`git clone https://github.com/carlosyauri/proyecto-3-acamica .`
 
 ### 2 - Instalación de dependencias
 
